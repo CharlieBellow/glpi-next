@@ -1,4 +1,4 @@
-import { Page } from "../../components/Page";
+import { Page } from "../../../../components/Page";
 import { CardServiceLetter } from './CardServiceLetter'
 import {services} from './ServicesList'
 

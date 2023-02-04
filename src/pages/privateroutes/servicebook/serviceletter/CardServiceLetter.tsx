@@ -1,9 +1,10 @@
 import { InfoServiceItem } from "./InfoService";
 import * as Icon from "phosphor-react";
-import { Button } from "../../components/Buttons/Button";
+import { Button } from "../../../../components/Buttons/Button";
 //import { ServicesList } from "./ServicesList";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Link from "next/link" 
 
 interface CardServiceLetterProps {
 	service: Array<any>;
@@ -42,7 +43,7 @@ export function CardServiceLetter(props: CardServiceLetterProps) {
 					{props.service[props.index].title}
 				</h3>
 				<div className="mr-4 fixed bottom-9 right-0 lg:right-0 lg:top-0 lg:relative lg:flex lg:justify-end">
-					<Link to={`/servicebook/${titleCategory}/${titleSubcategory}/${serviceLetter}/${idServiceLetter}`}>
+					<Link href={`/servicebook/${titleCategory}/${titleSubcategory}/${serviceLetter}/${idServiceLetter}`}>
 						<Button
 							title={floatingButton ? "" : changeButtonName()}
 							theme="withIcon"

@@ -15,7 +15,7 @@ export const AuthContext = createContext( {} as AuthContextProps );
 
 export function AuthProvider ( { children }: AuthProviderProps ) {
   // Depois mudar o valor inicial para false
-  const [ auth, setAuth ] = useState<boolean>(false)
+  const [ auth, setAuth ] = useState<boolean>(true)
 
   function changeAuth (auth: boolean) {
     setAuth(!auth)

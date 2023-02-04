@@ -1,5 +1,5 @@
-import CardAddUser from "../../components/Cards/CardAddUser";
-import { Page } from "../../components/Page";
+import CardAddUser from "../../../../components/Cards/CardAddUser";
+import { Page } from "../../../../components/Page";
 
 function FormUserInfo() {
 	return (

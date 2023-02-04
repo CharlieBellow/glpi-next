@@ -1,11 +1,12 @@
-import { Page } from "../../components/Page";
+import { Page } from "../../../../components/Page";
 import * as Icon from "phosphor-react"
 
-import CardCategory from "../../components/CardCategory";
-import { useParams } from "react-router-dom";
-import { categoryModel, subcategoryModel } from "../../Utils/ServiceModels";
-import { RoutesContext } from "../../Contexts/RouteContext";
+import CardCategory from "../../../../components/CardCategory";
+//import { useParams } from "react-router-dom";
+import { categoryModel, subcategoryModel } from "../../../../Utils/ServiceModels";
+import { RoutesContext } from "../../../../Contexts/RouteContext";
 import { useContext } from "react";
+import { useRouter } from "next/router"
 
 interface CategoriaProps {
 	categoryId?: string;
@@ -13,9 +14,9 @@ interface CategoriaProps {
 
 const Subcategory = ( { categoryId }: CategoriaProps ) => {
 
-	const { titleCategory } = useParams()
-	const parametros = useParams()
-	console.log(parametros);
+  const router = useRouter()
+	const { titleCategory } = router.query
+
 	
 	console.log( "titleCategory", titleCategory );
 
