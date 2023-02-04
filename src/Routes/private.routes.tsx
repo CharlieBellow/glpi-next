@@ -12,7 +12,7 @@ import AddUser from "../pages/AddUser";
 
 import { CardTest } from "../components/Cards/CardTest";
 
-import Dashboard from "../pages/dashboard";
+import Dashboard from "../pages/privateroutes/dashboard";
 
 import { ServiceRoutes } from "./service.routes";
 

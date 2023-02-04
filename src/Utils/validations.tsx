@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 import { categoryModel, serviceModel, subcategoryModel } from './ServiceModels'
 
-import { services } from '../pages/ServiceLetter/ServicesList'
+import { services } from '../pages/privateroutes/ServiceLetter/ServicesList'
 
 export const lettersOnly = /[^a-zA-Z]/g;
 

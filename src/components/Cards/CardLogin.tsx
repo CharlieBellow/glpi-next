@@ -1,4 +1,6 @@
-import "../../styles/main.css";
+import { useContext } from "react";
+//import { AuthContext } from "../../Contexts/AuthContext";
+import { AuthContext, AuthProvider, useAuth } from '../../Contexts/AuthContext';
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
@@ -7,9 +9,7 @@ import { Form, Formik } from "formik";
 import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { useContext } from "react";
-import { AuthContext } from "../../Contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
 
 
 const validate = yup.object().shape({
@@ -19,12 +19,14 @@ const validate = yup.object().shape({
 
 export function CardLogin () {
 	
-	const { auth, setAuth }: any = useContext( AuthContext )
+	//const { auth, setAuth }: any = useContext( AuthContext )
+
+  const { auth, changeAuth } = useAuth()
 	console.log( "auth", auth );
-	const navigate = useNavigate()
+	//const navigate = useNavigate()
 	
 	const signUp = () => {
-		navigate('/')
+		navigate("/privatesroutes/dashboard", "dashboard")
 	}
 	
 	return (
@@ -39,7 +41,7 @@ export function CardLogin () {
 					setTimeout(() => {
 						console.log( "submit:", values );
 						if ( values.email === "admin@admin.com" && values.password === "Admin123" ) {
-							setAuth( true )
+              changeAuth( auth )
 							//navigate("/dashboard")
 							toast.success("Login realizado com sucesso!");
 							signUp()
@@ -85,7 +87,7 @@ export function CardLogin () {
 						
 								
 							<Button title="Esqueci a senha" theme="textOnly" />
-							<Link to="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
+							<Link href="/signup" className="text-blue-ufal text-center font-semibold text-base">Novo Cadastro</Link>
 							
 						</div>
 					</Form>

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "../styles/main.css";
 
@@ -13,13 +13,13 @@ import AddUser from "../pages/AddUser";
 import { CardTest } from "../components/Cards/CardTest";
 
 
-import Dashboard from "../pages/dashboard";
+import Dashboard from "../pages/privateroutes/dashboard";
 
 export function AppRoutes () {
   return (
 
-    <Router>
-      <Routes>
+    //<Router>
+    //  <Routes>
 
 
         {/*   <Route path="/Dashboard" element={ <Dashboard /> } />
@@ -40,7 +40,7 @@ export function AppRoutes () {
 */}
 
 
-      </Routes>
-    </Router>
+      {/*</Routes>
+    </Router>*/}
   );
 }
