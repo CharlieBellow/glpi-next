@@ -1,5 +1,5 @@
-import { Page } from "../../components/Page";
-import TableList from "../../components/TableList";
+import { Page } from "../../../components/Page";
+import TableList from "../../../components/TableList";
 import { useEffect, useState } from "react";
 
 
@@ -14,11 +14,17 @@ const ItemSelect = [
 
 
 export default function List() {
-	const usersStorage = localStorage.getItem("users");
-	const [lista, setLista] = useState([]);
-
-	useEffect(() => {
-		if (usersStorage) {
+  const [lista, setLista] = useState([]);
+  
+  useEffect( () => {
+    
+  })
+	
+  
+  useEffect( () => {
+    if (localStorage.getItem("users") !== null) {
+      
+      const usersStorage = localStorage.getItem("users");
 			const listas = JSON.parse(usersStorage)!;
 			console.log("lista:", lista);
 			setLista(listas);

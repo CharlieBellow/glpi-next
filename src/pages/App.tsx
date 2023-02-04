@@ -1,4 +1,4 @@
-import { AuthContext } from '../Contexts/AuthContext';
+import { AuthContext, useAuth } from '../Contexts/AuthContext';
 import React, { useContext } from 'react';
 
 import { ChakraProvider } from "@chakra-ui/react";
@@ -11,25 +11,30 @@ import {useEffect} from "react"
 
 
 function App () {
-  const router = useRouter()
+  const router = useRouter();
 
-  const { auth }: any = useContext( AuthContext );
-  //console.log( "auth", auth );
+  const { auth } = useAuth();
 
-  useEffect(() => {
-    if(auth) {
-      router.push( "privatesroutes", "dashboard") 
+
+  //const { auth }: any = useContext( AuthContext );
+  console.log( "auth App", auth );
+
+  useEffect( () => {
+    // inverter a lógica depois que conseguir fazer o contexto funcionar
+    if ( auth ) {
+      router.push( "privateroutes/dashboard", "/" );
     } else {
-      router.push("publicroutes/Login", "login")
+      router.push( "publicroutes/Login", "login" );
     }
-  }, [auth])
+  }, [  ] )
+
 
   return (
     <>
 
-      
     
-      <ToastContainer />
+    
+      
        
 
     </>

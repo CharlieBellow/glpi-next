@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useEffect } from "react";
 //import { AuthContext } from "../../Contexts/AuthContext";
-import { AuthContext, AuthProvider, useAuth } from '../../Contexts/AuthContext';
+import { useAuth } from '../../Contexts/AuthContext';
 import { Button } from "../Buttons/Button";
 import { CardTitle } from "./CardTitle";
 import { CardLabelInput } from "../Inputs/CardLabelInput";
@@ -10,6 +10,7 @@ import { validationSchema } from "../../Utils/validations";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import {useRouter} from "next/router"
 
 
 const validate = yup.object().shape({
@@ -19,15 +20,10 @@ const validate = yup.object().shape({
 
 export function CardLogin () {
 	
-	//const { auth, setAuth }: any = useContext( AuthContext )
-
   const { auth, changeAuth } = useAuth()
-	console.log( "auth", auth );
-	//const navigate = useNavigate()
-	
-	const signUp = () => {
-		navigate("/privatesroutes/dashboard", "dashboard")
-	}
+
+	const router = useRouter();
+
 	
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
@@ -41,10 +37,12 @@ export function CardLogin () {
 					setTimeout(() => {
 						console.log( "submit:", values );
 						if ( values.email === "admin@admin.com" && values.password === "Admin123" ) {
+              console.log( "auth login 2", auth );
               changeAuth( auth )
-							//navigate("/dashboard")
+              console.log( "auth login 3", auth );
+		
 							toast.success("Login realizado com sucesso!");
-							signUp()
+              router.push( "../privateroutes/dashboard", "/" )
 							
 						} else {
 						toast.error("Usuário não cadastrado. Clique no botão \"Novo Cadastro\" para criar uma conta.");
@@ -93,6 +91,7 @@ export function CardLogin () {
 					</Form>
 				)}
 			</Formik>
+    
 		</div>
 	);
 }
