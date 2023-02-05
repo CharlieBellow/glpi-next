@@ -1,7 +1,9 @@
 
 
 import Link from "next/link";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
+
+
 
 interface ServiceByCategoryProps {
   listservices: Array<object>;
@@ -14,7 +16,7 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 
 
   const router = useRouter()
-  console.log("router" , router.query.subcategory);
+  console.log("router" , router.query);
   const {subcategory, service, serviceorder} = router.query
 
   
@@ -33,7 +35,7 @@ const ServiceByCategory = ( props: ServiceByCategoryProps ) => {
 						<>
 							<Link
 								id={ service.title }
-								href={ `/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${service.title}/${service.id}` }
+								href={ `/privateroutes/servicebook/category/${ router.query.subcategory }/${ router.query.service }/${service.id}` }
 								key={ service.title }
 								className="text-blue-ufal font-bold text-xl hover:underline hover:underline-offset-2"
 									>
