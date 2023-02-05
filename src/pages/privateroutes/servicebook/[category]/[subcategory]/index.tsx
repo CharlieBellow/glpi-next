@@ -1,27 +1,23 @@
-import { Page } from "../../../../components/Page";
+import { Page } from "../../../../../components/Page";
 import * as Icon from "phosphor-react"
 
-import CardCategory from "../../../../components/CardCategory";
+import CardCategory from "../../../../../components/CardCategory";
 //import { useParams } from "react-router-dom";
-import { categoryModel, subcategoryModel } from "../../../../Utils/ServiceModels";
-import { RoutesContext } from "../../../../Contexts/RouteContext";
+import { categoryModel, subcategoryModel } from "../../../../../Utils/ServiceModels";
+import { RoutesContext } from "../../../../../Contexts/RouteContext";
 import { useContext } from "react";
 import { useRouter } from "next/router"
 
-interface CategoriaProps {
-	categoryId?: string;
-}
+//interface CategoriaProps {
+//	categoryId?: string;
+//}
 
-const Subcategory = ( { categoryId }: CategoriaProps ) => {
+//{ categoryId }: CategoriaProps
+
+const Subcategory = (  ) => {
 
   const router = useRouter()
-	const { titleCategory } = router.query
 
-	
-	console.log( "titleCategory", titleCategory );
-
-  const {  category } = useContext( RoutesContext );
-  console.log( "category", category );
 
 
   return (
@@ -37,25 +33,40 @@ const Subcategory = ( { categoryId }: CategoriaProps ) => {
 					<div className="lg:w-[59.5rem] m-15 grid lg:grid-cols-3 md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-x-10  gap-y-6 mt-0">
 						{/*<div className="flex flex-col gap-4 ">*/}
 						<div>
-							<CardCategory
-								link={`/servicebook/${ titleCategory }/${ subcategoryModel[ 0 ].titleSubcategory }` }
+
+              { subcategoryModel.map( ( subcategory, index ) => {
+                
+                return (
+                  <>
+
+                    <CardCategory link={ `/privateroutes/servicebook/category/${router.query.subcategory}/${ subcategory.titleSubcategory }` } Name={ subcategory.titleSubcategory } Icon={ subcategory.icon }
+                      key={ subcategory.id }
+                      idCategory={ subcategory.id }
+                    />
+
+                  </>
+                );
+              } ) }
+
+							{/*<CardCategory
+								link={`/servicebook/category/${ category }/${ subcategoryModel[ 0 ].titleSubcategory }` }
 								Name={ subcategoryModel[ 0 ].titleSubcategory }
-								Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }								
+								Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }
 								
 							/>
-							<p>
+							<p>*/}
 								Clique no card para solicitar um serviço relacionado a Rede de
 								internet
-							</p>
+							{/*</p>*/}
 						</div>
-						<CardCategory
+						{/*<CardCategory
 							link="/ListServices"
 							Name={ "Sistemas" }
 							Icon={ <Icon.Cpu size={ 27 } /> } idCategory={ "" }						/>
 						<CardCategory
 							link="/ListServices"
 							Name={ "Manutenção" }
-							Icon={ <Icon.Wrench size={ 27 } /> } idCategory={ "" }						/>
+							Icon={ <Icon.Wrench size={ 27 } /> } idCategory={ "" }						/>*/}
 						{/*</div>*/}
 
 						{/*<div className="flex flex-col gap-4 ">
